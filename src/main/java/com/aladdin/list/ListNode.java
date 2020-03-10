@@ -1,5 +1,8 @@
 package com.aladdin.list;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListNode {
     int val;
     ListNode next;
@@ -8,15 +11,30 @@ public class ListNode {
         val = x;
     }
 
- @Override
- public String toString() {
-  return "[" +
-          "val=" + val+
-          ']';
- }
+    public ListNode() {
+    }
 
- public static void main(String[] args) {
-     ListNode listNode1 = new ListNode(1);
+    @Override
+    public String toString() {
+        return "[" +
+                val +
+                ']';
+    }
+
+    static List<ListNode> print(ListNode head) {
+        List<ListNode> listNodes = new ArrayList<>();
+        ListNode listNode;
+        listNodes.add(head == null ? null : head);
+        while (head.next != null) {
+            listNode = head.next;
+            listNodes.add(listNode);
+            head = listNode;
+        }
+        return listNodes;
+    }
+
+    public static void main(String[] args) {
+        ListNode listNode1 = new ListNode(1);
         ListNode listNode2 = new ListNode(2);
         ListNode listNode3 = new ListNode(3);
         ListNode listNode4 = new ListNode(4);
@@ -27,7 +45,11 @@ public class ListNode {
         listNode4.next = listNode5;
 
         Solution solution = new Solution();
-        System.out.println(solution.reverseList(listNode1).toString());
+        System.out.println(print(solution.reverseList(listNode1)));
+
+        ListNode listNode = new ListNode(6);
+        listNode.next=null;
+
     }
 }
 
@@ -40,7 +62,8 @@ class Solution {
         }
         ListNode newHead = reverseList(head.next);
         head.next.next = head;
-        head.next = null;
+//        head.next=null;
         return newHead;
     }
+
 }
