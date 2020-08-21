@@ -42,6 +42,5 @@ public class ReverseSingleList {
         n.setNext(head);
         singleList.setHead(n);
         return singleList;
-
     }
 }
