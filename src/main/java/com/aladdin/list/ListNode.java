@@ -1,5 +1,6 @@
 package com.aladdin.list;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class ListNode {
     }
 
     static List<ListNode> print(ListNode head) {
-        List<ListNode> listNodes = new ArrayList<>();
+        List<ListNode> listNodes = new ArrayList();
         ListNode listNode;
         listNodes.add(head == null ? null : head);
         while (head.next != null) {
@@ -44,26 +45,28 @@ public class ListNode {
         listNode3.next = listNode4;
         listNode4.next = listNode5;
 
-        Solution solution = new Solution();
+        ListNode listNode6 = new ListNode();
+        Solution solution = listNode6.new Solution();
         System.out.println(print(solution.reverseList(listNode1)));
 
         ListNode listNode = new ListNode(6);
-        listNode.next=null;
+        listNode.next = null;
 
     }
-}
 
-class Solution {
+    class Solution {
 
-    public ListNode reverseList(ListNode head) {
+        public ListNode reverseList(ListNode head) {
 
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode newHead = reverseList(head.next);
-        head.next.next = head;
+            if (head == null || head.next == null) {
+                return head;
+            }
+            ListNode newHead = reverseList(head.next);
+            head.next.next = head;
 //        head.next=null;
-        return newHead;
-    }
+            return newHead;
+        }
 
+    }
 }
+
